@@ -27,7 +27,6 @@ CREATE TABLE employee (
   role_id INT,
   FOREIGN KEY (role_id) REFERENCES role(id),
   FOREIGN KEY (manager_id) REFERENCES employee(id)
-
 );
 
 
@@ -39,7 +38,6 @@ INSERT INTO department (name)
 VALUE ("Finance");
 INSERT INTO department (name)
 VALUE ("Legal");
-
 
 INSERT INTO role (title, salary, department_id)
 VALUE ("Lead Engineer", 150000, 2);
