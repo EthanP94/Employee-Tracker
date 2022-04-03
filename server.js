@@ -1,6 +1,7 @@
-const inquirer = require("inquirer")
-const mysql = require("mysql")
-const cTable = require('console.table');
+const inquirer = require("inquirer");
+const mysql = require("mysql");
+const cTable = require("console.table");
+
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -214,9 +215,9 @@ function updateEmployee() {
             for (var i = 0; i < res.length; i++) {
             lastName.push(res[i].last_name);
           }
-                return lastName;
-            },
-                message: "What is the Employee's last name? ",
+              return lastName;
+          },
+              message: "What is the Employee's last name? ",
           },
           {
             name: "role",
@@ -245,3 +246,59 @@ function updateEmployee() {
   });
 
 }
+
+function addRole() { 
+  connection.query("SELECT role.title AS Title, role.salary AS Salary FROM role",   function(err, res) {
+    inquirer.prompt([
+        {
+          name: "Title",
+          type: "input",
+          message: "What is the roles Title?"
+        },
+        {
+          name: "Salary",
+          type: "input",
+          message: "What is the Salary?"
+
+        } 
+    ]).then(function(res) {
+        connection.query(
+            "INSERT INTO role SET ?",
+            {
+              title: res.Title,
+              salary: res.Salary,
+            },
+            function(err) {
+                if (err) throw err
+                console.table(res);
+                startPrompt();
+            }
+        )
+
+    });
+  });
+}
+
+function addDepartment() { 
+
+  inquirer.prompt([
+      {
+        name: "name",
+        type: "input",
+        message: "What Department would you like to add?"
+      }
+  ]).then(function(res) {
+      var query = connection.query(
+          "INSERT INTO department SET ? ",
+          {
+            name: res.name
+          
+          },
+          function(err) {
+              if (err) throw err
+              console.table(res);
+              startPrompt();
+          }
+      )
+  })
+};

@@ -55,13 +55,13 @@ INSERT INTO role (title, salary, department_id)
 VALUE ("Lawyer", 190000, 4);
 
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Jessica", "Haze", null, 1);
+VALUE ("Jessica", "Nazel", null, 1);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Tiffany", "Patric", null, 2);
+VALUE ("Tiffany", "Patrick", null, 2);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Mia","Lam",null,3);
+VALUE ("Mike","Lambino",null,3);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Bently", "Lao", 1, 4);
+VALUE ("Brent", "Laos", 1, 4);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
 VALUE ("Chris", "Melby", 4, 5);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
