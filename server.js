@@ -227,7 +227,7 @@ function updateEmployee() {
           },
       ]).then(function(val) {
         var roleId = selectRole().indexOf(val.role) + 1
-        connection.query("UPDATE employee SET WHERE ?", 
+        connection.query("UPDATE employee SET ? WHERE ?", 
         {
           last_name: val.lastName
            
