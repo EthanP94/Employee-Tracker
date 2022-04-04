@@ -57,7 +57,7 @@ VALUE ("Lawyer", 190000, 4);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
 VALUE ("Jessica", "Nazel", null, 1);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Tiffany", "Patrick", null, 2);
+VALUE ("Tiffany", "Nickel", null, 2);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
 VALUE ("Mike","Lambino",null,3);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)

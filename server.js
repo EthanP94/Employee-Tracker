@@ -25,8 +25,8 @@ function startPrompt() {
     name: "choice",
     choices: [
               "View All Employees?", 
-              "View All Employee's By Roles?",
-              "View all Emplyees By Deparments", 
+              "View All Employees By Roles?",
+              "View all Employees By Deparments", 
               "Update Employee",
               "Add Employee?",
               "Add Role?",
@@ -39,10 +39,10 @@ function startPrompt() {
               viewAllEmployees();
             break;
     
-          case "View All Employee's By Roles?":
+          case "View All Employees By Roles?":
               viewAllRoles();
             break;
-          case "View all Emplyees By Deparments":
+          case "View all Employees By Deparments":
               viewAllDepartments();
             break;
           
@@ -227,28 +227,25 @@ function updateEmployee() {
           },
       ]).then(function(val) {
         var roleId = selectRole().indexOf(val.role) + 1
-        connection.query("UPDATE employee SET ? WHERE ?", 
-        {
+        connection.query(
+          "UPDATE employee SET ? WHERE ?", 
+        [{
           last_name: val.lastName
-           
         }, 
         {
           role_id: roleId
-           
-        }, 
+        }], 
         function(err){
             if (err) throw err
             console.table(val)
             startPrompt()
         })
-  
     });
   });
-
 }
 
 function addRole() { 
-  connection.query("SELECT role.title AS Title, role.salary AS Salary FROM role",   function(err, res) {
+  connection.query("SELECT role.title AS Title, role.salary AS Salary FROM role", function (err, res) {
     inquirer.prompt([
         {
           name: "Title",
@@ -302,3 +299,4 @@ function addDepartment() {
       )
   })
 };
+
