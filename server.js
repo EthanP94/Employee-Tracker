@@ -181,7 +181,7 @@ function addEmployee() {
             name: "choice",
             type: "rawlist",
             message: "Whats their managers name?",
-            choices: selectManager()
+            choices: selectManager(),
         }
     ]).then(function (val) {
       var roleId = selectRole().indexOf(val.role) + 1
@@ -256,15 +256,14 @@ function addRole() {
           name: "Salary",
           type: "input",
           message: "What is the Salary?"
-
-        } 
+        },
     ]).then(function(res) {
         connection.query(
             "INSERT INTO role SET ?",
-            {
+            [{
               title: res.Title,
               salary: res.Salary,
-            },
+            }],
             function(err) {
                 if (err) throw err
                 console.table(res);
@@ -283,14 +282,18 @@ function addDepartment() {
         name: "name",
         type: "input",
         message: "What Department would you like to add?"
-      }
+      },
+      {
+        name: "id",
+        type: "input",
+        message: "Whats is this Departments ID?"
+      }, 
   ]).then(function(res) {
       var query = connection.query(
           "INSERT INTO department SET ? ",
-          {
+          [{
             name: res.name
-          
-          },
+          }],
           function(err) {
               if (err) throw err
               console.table(res);
