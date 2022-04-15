@@ -186,7 +186,7 @@ function updateEmployee() {
         var roleId = selectRole().indexOf(val.role) + 1
         connection.query(
           "UPDATE employee SET ? WHERE ?", 
-        [ 
+        [
           {
             role_id: roleId
           },
